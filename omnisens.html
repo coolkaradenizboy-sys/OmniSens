@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html class="dark" lang="tr">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>OmniSens</title>
+<style>
+  html, body { margin:0; padding:0; background-color:#06080e; }
+  body { overscroll-behavior:none; }
+  ::-webkit-scrollbar { display:none; }
+  .bg-grid-cyber {
+    background-image:
+      radial-gradient(circle at 50% 0%, rgba(0,102,255,0.18) 0%, transparent 60%),
+      radial-gradient(circle at 85% 30%, rgba(0,210,255,0.08) 0%, transparent 50%),
+      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:100% 100%,100% 100%,48px 48px,48px 48px;
+  }
+  .neon-text-glow { text-shadow:0 0 16px rgba(0,210,255,0.6); }
+  .hero-btn-glow { box-shadow:0 0 28px rgba(0,102,255,0.45), 0 0 50px rgba(0,210,255,0.2); }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=JetBrains+Mono:wght@100..900&family=Space+Grotesk:wght@400..900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: { extend: {
+      colors: { "surface":"#07090f", "on-surface":"#ffffff" },
+      spacing: { "gutter-lg":"2rem", "space-lg":"1.5rem", "space-sm":"0.5rem" },
+      fontFamily: {
+        "label-data-md":["JetBrains Mono","monospace"],
+        "label-data-sm":["JetBrains Mono","monospace"],
+        "label-data-lg":["JetBrains Mono","monospace"],
+        "label-caps":["JetBrains Mono","monospace"],
+        "headline-sm":["Space Grotesk","sans-serif"],
+        "headline-xl":["Space Grotesk","sans-serif"],
+        "body-md":["Geist","sans-serif"]
+      }
+    } }
+  };
+</script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased bg-grid-cyber min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+
+<header class="w-full bg-[#070911]/80 backdrop-blur-md border-b border-blue-500/20 py-3 px-gutter-lg sticky top-0 z-50">
+  <div class="max-w-4xl mx-auto flex items-center justify-between">
+    <div class="flex items-center gap-space-sm">
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00d2ff] opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00d2ff] shadow-[0_0_10px_#00d2ff]"></span>
+      </span>
+      <div class="flex items-baseline gap-2">
+        <span class="font-headline-sm text-base tracking-wider text-white uppercase font-black">OMNISENS</span>
+        <span class="font-label-caps text-[10px] text-[#00d2ff] tracking-widest uppercase font-semibold">// HIZLI HASSASİYET BULUCU</span>
+      </div>
+    </div>
+    <div class="flex items-center gap-1.5 px-3 py-1 bg-blue-950/40 rounded-full border border-blue-500/30">
+      <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+      <span class="font-label-caps text-[10px] text-blue-200 uppercase tracking-widest font-semibold">KAYIT GEREKMEZ // DOĞRUDAN ÇALIŞIR</span>
+    </div>
+  </div>
+</header>
+
+<main class="w-full flex-1 py-space-lg px-gutter-lg flex flex-col items-center">
+<div class="max-w-4xl w-full flex flex-col gap-6">
+
+  <div class="text-center flex flex-col items-center gap-2 pt-2">
+    <div class="inline-flex items-center gap-2 px-4 py-1 bg-blue-950/50 rounded-full border border-blue-500/40 shadow-[0_0_15px_rgba(0,102,255,0.25)]">
+      <span class="text-[#00d2ff] text-xs">⚡</span>
+      <span class="font-label-caps text-xs text-blue-200 uppercase tracking-wider font-semibold">1:1 KAS HAFIZASI DÖNÜŞTÜRÜCÜ • SIFIR GECİKME</span>
+    </div>
+    <h1 class="font-headline-xl text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-white mt-1">BİR OYUNDAN DİĞERİNE. <span class="bg-gradient-to-r from-white via-blue-200 to-[#00d2ff] bg-clip-text text-transparent">KUSURSUZ AKTAR.</span></h1>
+    <p class="font-body-md text-sm sm:text-base text-gray-400 max-w-xl font-normal leading-relaxed">Oynadığın oyunun hassasiyetini gir, geçmek istediğin oyundaki tam fiziksel 1:1 cm/360 karşılığını anında al. Kas hafızanı sıfırlamadan hemen oyuna geç.</p>
+  </div>
+
+  <div class="flex flex-col gap-5">
+    <div class="grid grid-cols-1 lg:grid-cols-11 gap-4 items-stretch">
+
+      <!-- KAYNAK -->
+      <div class="lg:col-span-5 bg-[#0b0e17]/85 backdrop-blur-md border border-blue-500/20 hover:border-blue-500/40 rounded-xl p-5 sm:p-6 shadow-xl flex flex-col justify-between gap-4">
+        <div class="flex items-center justify-between border-b border-blue-950/60 pb-3">
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 rounded bg-blue-600/30 border border-blue-500/60 text-[#00d2ff] font-label-data-sm flex items-center justify-center font-bold">01</span>
+            <h2 class="font-headline-sm text-sm sm:text-base text-white uppercase font-bold tracking-wide">Şu An Oynadığın Oyun &amp; Sensin</h2>
+          </div>
+          <span class="font-label-caps text-[10px] text-blue-300 uppercase bg-blue-950/40 px-2 py-0.5 rounded border border-blue-500/20">KAYNAK</span>
+        </div>
+        <div class="flex flex-col gap-3">
+          <label class="font-label-caps text-xs text-gray-300 uppercase tracking-wider font-semibold">Kaynak Oyun</label>
+          <div class="relative w-full group">
+            <span class="material-symbols-outlined absolute left-3.5 top-3 text-blue-400 text-lg pointer-events-none">sports_esports</span>
+            <select class="w-full bg-[#06080f] text-white font-headline-sm text-sm sm:text-base pl-11 pr-10 py-2.5 rounded-lg border border-blue-500/30 focus:border-[#00d2ff] focus:ring-1 focus:ring-[#00d2ff] focus:outline-none cursor-pointer" id="source-game-select"></select>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+          <div>
+            <label class="font-label-caps text-xs text-gray-300 uppercase tracking-wider font-semibold block mb-1.5">Mevcut Sens Değerin</label>
+            <div class="relative flex items-center">
+              <input class="w-full bg-[#06080f] text-white font-label-data-lg text-lg px-3 py-2 rounded-lg border border-blue-500/30 focus:border-[#00d2ff] focus:ring-1 focus:ring-[#00d2ff] focus:outline-none" id="source-sens-input" max="100" min="0.001" step="0.001" type="number" value="0.320">
+              <span class="absolute right-3 font-label-data-sm text-xs text-[#00d2ff] font-bold pointer-events-none">SENS</span>
+            </div>
+          </div>
+          <div>
+            <label class="font-label-caps text-xs text-gray-300 uppercase tracking-wider font-semibold block mb-1.5">Fare Donanım DPI</label>
+            <div class="grid grid-cols-4 gap-1">
+              <button class="src-dpi-btn py-2 bg-[#0f1422] text-gray-300 hover:text-white font-label-data-sm text-xs rounded border border-blue-500/20" data-dpi="400" type="button">400</button>
+              <button class="src-dpi-btn py-2 bg-gradient-to-b from-blue-600 to-[#0052cc] text-white font-label-data-sm text-xs rounded border border-[#00d2ff] shadow-[0_0_12px_rgba(0,102,255,0.6)] font-bold" data-dpi="800" type="button">800</button>
+              <button class="src-dpi-btn py-2 bg-[#0f1422] text-gray-300 hover:text-white font-label-data-sm text-xs rounded border border-blue-500/20" data-dpi="1600" type="button">1600</button>
+              <button class="src-dpi-btn py-2 bg-[#0f1422] text-gray-300 hover:text-white font-label-data-sm text-xs rounded border border-blue-500/20" data-dpi="3200" type="button">3200</button>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-1.5 pt-1 border-t border-blue-950/40">
+          <div class="w-full pb-1"><span class="font-label-caps text-[10px] text-gray-400 uppercase tracking-wider">KAYNAK HIZLI SEÇİM:</span></div>
+          <div class="flex flex-wrap items-center gap-1.5 w-full">
+            <button class="quick-src-btn" data-game="valorant" type="button">Valorant</button>
+            <button class="quick-src-btn" data-game="cs2" type="button">CS2</button>
+            <button class="quick-src-btn" data-game="warzone" type="button">Warzone</button>
+            <button class="quick-src-btn" data-game="tarkov" type="button">Tarkov</button>
+            <button class="quick-src-btn" data-game="tlou" type="button">The Last of Us</button>
+            <button class="quick-src-btn" data-game="cyberpunk" type="button">Cyberpunk</button>
+            <button class="quick-src-btn" data-game="rdr2" type="button">RDR2</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SWAP -->
+      <div class="lg:col-span-1 flex flex-col items-center justify-center py-2 lg:py-0">
+        <button class="group p-3 rounded-full bg-[#0d1222] border border-[#00d2ff]/40 hover:border-[#00d2ff] text-[#00d2ff] shadow-[0_0_15px_rgba(0,102,255,0.3)] hover:shadow-[0_0_20px_#00d2ff] transition-all flex items-center justify-center cursor-pointer" id="swap-games-btn" title="Oyunları Yer Değiştir" type="button">
+          <span class="material-symbols-outlined text-2xl group-hover:rotate-180 transition-transform duration-300">swap_horiz</span>
+        </button>
+        <div class="mt-2 px-2 py-1 bg-blue-950/60 rounded border border-blue-500/30 text-center">
+          <span class="font-label-caps text-[9px] text-[#00d2ff] uppercase tracking-wider block font-bold">1:1 KAS</span>
+          <span class="font-label-caps text-[9px] text-gray-300 uppercase tracking-wider block">HAFIZASI</span>
+        </div>
+      </div>
+
+      <!-- HEDEF -->
+      <div class="lg:col-span-5 bg-[#0b0e17]/85 backdrop-blur-md border border-blue-500/20 hover:border-blue-500/40 rounded-xl p-5 sm:p-6 shadow-xl flex flex-col justify-between gap-4">
+        <div class="flex items-center justify-between border-b border-blue-950/60 pb-3">
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 rounded bg-[#00d2ff] text-black font-label-data-sm flex items-center justify-center font-bold shadow-[0_0_10px_#00d2ff]">02</span>
+            <h2 class="font-headline-sm text-sm sm:text-base text-white uppercase font-bold tracking-wide">Geçmek İstediğin Hedef Oyun</h2>
+          </div>
+          <span class="font-label-caps text-[10px] text-[#00d2ff] uppercase bg-blue-950/40 px-2 py-0.5 rounded border border-blue-500/20">HEDEF</span>
+        </div>
+        <div class="flex flex-col gap-3">
+          <label class="font-label-caps text-xs text-gray-300 uppercase tracking-wider font-semibold">Hedef Oyun</label>
+          <div class="relative w-full group">
+            <span class="material-symbols-outlined absolute left-3.5 top-3 text-blue-400 text-lg pointer-events-none">sports_esports</span>
+            <select class="w-full bg-[#06080f] text-white font-headline-sm text-sm sm:text-base pl-11 pr-10 py-2.5 rounded-lg border border-blue-500/30 focus:border-[#00d2ff] focus:ring-1 focus:ring-[#00d2ff] focus:outline-none cursor-pointer" id="target-game-select"></select>
+          </div>
+        </div>
+        <div class="p-3 bg-[#080c16] rounded-lg border border-blue-500/20 flex items-center justify-between">
+          <div class="flex flex-col">
+            <span class="font-label-caps text-[10px] text-gray-400 uppercase">DÖNÜŞÜM MODU</span>
+            <span class="font-label-data-sm text-xs text-[#00d2ff] font-bold" id="target-engine-badge">SOURCE 2 / 1:1</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-1.5 pt-1 border-t border-blue-950/40">
+          <div class="w-full pb-1"><span class="font-label-caps text-[10px] text-gray-400 uppercase tracking-wider">HEDEF HIZLI SEÇİM:</span></div>
+          <div class="flex flex-wrap items-center gap-1.5 w-full">
+            <button class="quick-target-btn" data-game="cs2" type="button">CS2</button>
+            <button class="quick-target-btn" data-game="tlou" type="button">The Last of Us</button>
+            <button class="quick-target-btn" data-game="gow" type="button">God of War</button>
+            <button class="quick-target-btn" data-game="cyberpunk" type="button">Cyberpunk</button>
+            <button class="quick-target-btn" data-game="eldenring" type="button">Elden Ring</button>
+            <button class="quick-target-btn" data-game="wukong" type="button">Wukong</button>
+            <button class="quick-target-btn" data-game="warzone" type="button">Warzone</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SONUÇ -->
+    <div class="bg-gradient-to-b from-[#0e1424] via-[#090d18] to-[#05070e] border-2 border-blue-500/70 rounded-xl p-6 sm:p-7 shadow-[0_0_40px_rgba(0,102,255,0.28)] relative overflow-hidden flex flex-col gap-5">
+      <div class="absolute -top-16 -right-16 w-36 h-36 bg-blue-500/20 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="flex items-center justify-between border-b border-blue-900/50 pb-3 relative z-10">
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded bg-[#00d2ff] text-black font-label-data-sm flex items-center justify-center font-extrabold shadow-[0_0_12px_#00d2ff]">03</span>
+          <h2 class="font-headline-sm text-base text-white uppercase font-bold tracking-wide">Hesaplanan Yeni Hassasiyetin</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00d2ff] opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-[#00d2ff]"></span></span>
+          <span class="font-label-data-sm text-xs text-[#00d2ff] font-bold tracking-wider" id="result-pair-badge">VALORANT → CS2</span>
+        </div>
+      </div>
+
+      <div class="p-6 sm:p-8 bg-[#070a13]/90 rounded-xl flex flex-col items-center justify-center text-center gap-2 border border-blue-500/30 relative z-10 shadow-inner">
+        <span class="font-label-caps text-xs text-blue-300 tracking-widest uppercase font-semibold">HEDEF OYUN İÇİN GİRİLECEK DEĞER</span>
+        <div class="flex items-baseline justify-center gap-3 my-1">
+          <span class="font-headline-xl text-5xl sm:text-7xl text-white font-extrabold tracking-tight drop-shadow-[0_0_20px_rgba(0,102,255,0.4)]" id="calculated-sens-primary">1.018</span>
+          <span class="font-label-data-md text-base sm:text-lg text-[#00d2ff] font-bold tracking-widest neon-text-glow" id="calculated-unit">SENS</span>
+        </div>
+        <div class="hidden w-full max-w-xs mt-2 py-2 px-3 bg-[#0d1222] rounded-lg border border-blue-500/30 flex justify-around" id="dual-sens-container">
+          <div class="flex flex-col items-center"><span class="font-label-caps text-[10px] text-gray-400">SERBEST KAMERA</span><span class="font-label-data-md text-sm text-white font-bold" id="camera-sens-val">-</span></div>
+          <div class="w-px bg-blue-900/60"></div>
+          <div class="flex flex-col items-center"><span class="font-label-caps text-[10px] text-[#00d2ff]">AİM / NİŞAN</span><span class="font-label-data-md text-sm text-[#00d2ff] font-bold" id="aim-sens-val">-</span></div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 relative z-10">
+        <div class="p-3 bg-[#080c16] rounded-lg border border-blue-500/20 flex flex-col items-center text-center">
+          <span class="font-label-caps text-[10px] text-gray-400 uppercase tracking-wider">FİZİKSEL 360° MESAFESİ</span>
+          <div class="flex items-baseline gap-1 mt-1"><span class="font-label-data-lg text-xl sm:text-2xl text-white font-bold" id="cm-360-readout">51.0</span><span class="font-label-caps text-xs text-[#00d2ff]">cm</span></div>
+        </div>
+        <div class="p-3 bg-[#080c16] rounded-lg border border-blue-500/20 flex flex-col items-center text-center">
+          <span class="font-label-caps text-[10px] text-gray-400 uppercase tracking-wider">KAYNAK eDPI DEĞERİ</span>
+          <div class="flex items-baseline gap-1 mt-1"><span class="font-label-data-lg text-xl sm:text-2xl text-[#00d2ff] font-bold neon-text-glow" id="edpi-readout">256.0</span><span class="font-label-caps text-xs text-blue-300">eDPI</span></div>
+        </div>
+        <div class="p-3 bg-[#080c16] rounded-lg border border-blue-500/20 flex flex-col items-center text-center">
+          <span class="font-label-caps text-[10px] text-gray-400 uppercase tracking-wider">HEDEF eDPI EŞDEĞERİ</span>
+          <div class="flex items-baseline gap-1 mt-1"><span class="font-label-data-lg text-xl sm:text-2xl text-white font-bold" id="target-edpi-readout">814.4</span><span class="font-label-caps text-[10px] text-[#00d2ff]">eDPI</span></div>
+        </div>
+      </div>
+
+      <button class="w-full py-4 bg-gradient-to-r from-blue-600 via-[#0066ff] to-[#00aaff] hover:from-blue-500 hover:to-[#00d2ff] text-white font-headline-sm text-sm uppercase tracking-wider font-extrabold rounded-lg transition-all duration-200 flex items-center justify-center gap-2 hero-btn-glow active:scale-[0.99] relative z-10 cursor-pointer" id="copy-sens-btn" type="button">
+        <span class="material-symbols-outlined text-lg" id="copy-icon">content_copy</span>
+        <span id="copy-btn-text">DEĞERİ KOPYALA &amp; OYUNA GEÇ</span>
+      </button>
+    </div>
+
+    <!-- TÜM OYUNLAR TABLOSU -->
+    <div class="bg-[#0b0e17]/85 backdrop-blur-md border border-blue-500/20 rounded-xl p-5 sm:p-6 shadow-xl flex flex-col gap-4">
+      <div class="flex items-center justify-between border-b border-blue-950/60 pb-3">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#00d2ff] text-lg">grid_view</span>
+          <h3 class="font-headline-sm text-sm text-white uppercase font-bold tracking-wide">TÜM OYUNLARDAKİ KARŞILIĞI</h3>
+        </div>
+        <span class="font-label-caps text-[10px] text-gray-400 uppercase" id="matrix-cm-label">AYNI 51.0 cm/360 FİZİKSEL EŞLEŞME</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="multi-game-matrix"></div>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<footer class="w-full bg-[#05070e] border-t border-blue-500/15 py-4 text-center mt-6">
+  <div class="max-w-4xl mx-auto px-gutter-lg flex flex-col sm:flex-row items-center justify-between gap-2">
+    <span class="font-label-caps text-[10px] sm:text-xs text-gray-400 uppercase tracking-widest">OMNISENS // KAYIT YOK • ANINDA HESAPLAMA</span>
+    <span class="font-label-caps text-[10px] sm:text-xs text-[#00d2ff] uppercase tracking-wider font-semibold">~ İŞARETLİ DEĞERLER YAKLAŞIKTIR</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // yaw: sens=1 iken sayma başına derece. slider: oyun 1..max kademe kullanıyorsa max değeri
+  // approx:1 olanlar yaklaşık değerdir, oyunda küçük sapma olabilir
+  const G = {
+    valorant:{n:'Valorant',g:1,tag:'FPS',eng:'Riot',yaw:0.07},
+    cs2:{n:'CS2 / CS:GO',g:1,tag:'FPS',eng:'Source 2',yaw:0.022},
+    apex:{n:'Apex Legends',g:1,tag:'BR/FPS',eng:'Source Mod',yaw:0.022},
+    warzone:{n:'CoD: Warzone / MW3',g:1,tag:'FPS',eng:'IW 9.0',yaw:0.0066},
+    r6:{n:'Rainbow Six Siege',g:1,tag:'FPS',eng:'AnvilNext',yaw:0.00573},
+    ow2:{n:'Overwatch 2',g:1,tag:'FPS',eng:'Direct Yaw',yaw:0.0066},
+    bf2042:{n:'Battlefield 2042',g:1,tag:'FPS',eng:'Frostbite',yaw:0.0125,approx:1},
+    tarkov:{n:'Escape from Tarkov',g:1,tag:'FPS',eng:'Unity',yaw:0.0287,approx:1},
+    rust:{n:'Rust',g:1,tag:'SURVIVAL',eng:'Unity Yaw',yaw:0.03,approx:1},
+    pubg:{n:'PUBG',g:1,tag:'BR/FPS',eng:'Unreal 4',yaw:0.0066,approx:1},
+    tf2:{n:'Team Fortress 2',g:1,tag:'FPS',eng:'Source',yaw:0.022},
+    halo:{n:'Halo Infinite',g:1,tag:'FPS',eng:'Slipspace',yaw:0.0066,approx:1},
+    tlou:{n:'The Last of Us I/II',g:2,tag:'HİKAYE',eng:'Naughty Dog',yaw:0.05,slider:10,dual:1,approx:1},
+    gow:{n:'God of War & Ragnarök',g:2,tag:'HİKAYE',eng:'Kamera',yaw:0.05,slider:10,dual:1,approx:1},
+    spiderman:{n:"Marvel's Spider-Man",g:2,tag:'HİKAYE',eng:'Kamera',yaw:0.05,slider:10,approx:1},
+    alanwake2:{n:'Alan Wake 2',g:2,tag:'HİKAYE',eng:'Northlight',yaw:0.05,slider:10,approx:1},
+    re4:{n:'Resident Evil 4 Remake',g:2,tag:'HİKAYE',eng:'RE Engine',yaw:0.05,slider:10,approx:1},
+    ghostoftsushima:{n:'Ghost of Tsushima',g:2,tag:'HİKAYE',eng:'Kamera',yaw:0.05,slider:10,approx:1},
+    uncharted4:{n:'Uncharted 4',g:2,tag:'HİKAYE',eng:'Naughty Dog',yaw:0.05,slider:10,dual:1,approx:1},
+    deathstranding:{n:'Death Stranding',g:2,tag:'HİKAYE',eng:'Decima',yaw:0.05,slider:10,approx:1},
+    cyberpunk:{n:'Cyberpunk 2077',g:3,tag:'RPG',eng:'REDengine 4',yaw:0.022,approx:1},
+    rdr2:{n:'Red Dead Redemption 2',g:3,tag:'AÇIK DÜNYA',eng:'RAGE',yaw:0.03,approx:1},
+    gtav:{n:'Grand Theft Auto V',g:3,tag:'AÇIK DÜNYA',eng:'RAGE',yaw:0.035,approx:1},
+    eldenring:{n:'Elden Ring',g:3,tag:'RPG',eng:'Kademe',yaw:0.035,slider:10,approx:1},
+    wukong:{n:'Black Myth: Wukong',g:3,tag:'RPG',eng:'Unreal 5',yaw:0.03,approx:1},
+    witcher3:{n:'The Witcher 3',g:3,tag:'RPG',eng:'REDengine 3',yaw:0.03,approx:1},
+    starfield:{n:'Starfield',g:3,tag:'RPG',eng:'Creation 2',yaw:0.022,approx:1},
+    horizon:{n:'Horizon Zero Dawn / FW',g:3,tag:'RPG',eng:'Decima',yaw:0.05,slider:10,approx:1}
+  };
+  const GROUPS = {1:'REKABETÇİ & ARENA FPS',2:'HİKAYE & SİNEMATİK / TPS',3:'AÇIK DÜNYA & RPG'};
+  const $ = id => document.getElementById(id);
+  const srcSel=$('source-game-select'), tgtSel=$('target-game-select'), srcSens=$('source-sens-input');
+  const state = { dpi: 800, lastValue: '', lastRaw: NaN };
+
+  // Oyun listelerini doldur
+  function fillSelect(sel, def){
+    let html = '';
+    [1,2,3].forEach(gr => {
+      html += '<optgroup label="// '+GROUPS[gr]+'">';
+      Object.keys(G).filter(k => G[k].g === gr).forEach(k => {
+        html += '<option value="'+k+'">'+G[k].n+'</option>';
+      });
+      html += '</optgroup>';
+    });
+    sel.innerHTML = html;
+    sel.value = def;
+  }
+  fillSelect(srcSel, 'valorant');
+  fillSelect(tgtSel, 'cs2');
+
+  function degPerCount(gameId, sens){ return sens * G[gameId].yaw; }
+  function cm360(dpi, deg){ return 914.4 / (dpi * deg); }
+  function convert(gameId, cm, dpi){
+    const g = G[gameId];
+    let sens = 914.4 / (dpi * cm * g.yaw);
+    if (g.slider) {
+      sens = Math.min(g.slider, Math.max(1, Math.round(sens)));
+      return { raw: sens, text: sens + ' / ' + g.slider, unit: 'KADEME' };
+    }
+    const dec = sens >= 10 ? 2 : 3;
+    return { raw: sens, text: sens.toFixed(dec), unit: 'SENS' };
+  }
+
+  function compute(){
+    const sId = srcSel.value, tId = tgtSel.value;
+    let s = parseFloat(srcSens.value);
+    if (!isFinite(s) || s <= 0) s = 0.001;
+    const cm = cm360(state.dpi, degPerCount(sId, s));
+    const t = convert(tId, cm, state.dpi);
+    const tg = G[tId];
+
+    $('calculated-sens-primary').textContent = t.text;
+    $('calculated-unit').textContent = t.unit;
+    $('cm-360-readout').textContent = cm.toFixed(1);
+    $('matrix-cm-label').textContent = 'AYNI ' + cm.toFixed(1) + ' cm/360 FİZİKSEL EŞLEŞME';
+    $('edpi-readout').textContent = (state.dpi * s).toFixed(1);
+    const tSens = tg.slider ? t.raw : (914.4 / (state.dpi * cm * tg.yaw));
+    $('target-edpi-readout').textContent = (state.dpi * tSens).toFixed(1);
+    $('result-pair-badge').textContent = G[sId].n.toUpperCase().slice(0,16) + ' → ' + tg.n.toUpperCase().slice(0,16);
+    $('target-engine-badge').textContent = (tg.eng + (tg.approx ? ' / YAKLAŞIK' : ' / 1:1')).toUpperCase();
+    state.lastValue = t.text;
+    state.lastRaw = tSens;
+
+    const dual = $('dual-sens-container');
+    if (tg.dual) {
+      dual.classList.remove('hidden');
+      $('camera-sens-val').textContent = t.text;
+      $('aim-sens-val').textContent = Math.max(1, Math.round(t.raw * 0.65)) + ' / ' + tg.slider;
+    } else dual.classList.add('hidden');
+
+    renderMatrix(cm);
+    syncQuick();
+  }
+
+  function renderMatrix(cm){
+    let html = '';
+    [1,2,3].forEach(gr => {
+      html += '<div class="col-span-2 sm:col-span-4 flex items-center justify-between border-b border-blue-950/60 pb-1.5 pt-2"><span class="font-label-caps text-[10px] text-[#00d2ff] uppercase tracking-wider font-bold">// '+GROUPS[gr]+'</span></div>';
+      Object.keys(G).filter(k => G[k].g === gr).forEach(k => {
+        const g = G[k], r = convert(k, cm, state.dpi);
+        html += '<div class="p-3 bg-[#080c16] rounded-lg border border-blue-500/20 hover:border-[#00d2ff]/60 transition-all flex flex-col justify-between gap-2">'
+          + '<div class="flex items-center justify-between"><span class="font-label-data-sm text-xs text-white font-bold">'+g.n+'</span><span class="font-label-caps text-[9px] text-blue-300 bg-blue-950/60 px-1.5 py-0.5 rounded border border-blue-500/20">'+g.tag+'</span></div>'
+          + '<div class="flex items-baseline justify-between"><span class="font-headline-sm text-xl text-[#00d2ff] font-extrabold">'+r.text+'</span><span class="font-label-caps text-[10px] text-gray-400">'+(g.approx?'~ ':'')+g.eng+'</span></div>'
+          + '<button class="matrix-copy w-full py-1 bg-[#101524] hover:bg-blue-600/30 text-gray-300 hover:text-white rounded font-label-caps text-[10px] uppercase border border-blue-500/20 flex items-center justify-center gap-1 transition-colors" data-val="'+r.text+'" type="button"><span>KOPYALA</span></button></div>';
+      });
+    });
+    $('multi-game-matrix').innerHTML = html;
+  }
+
+  const BTN_ON  = 'px-2 py-0.5 bg-blue-600 text-white rounded font-label-data-sm text-xs border border-[#00d2ff]';
+  const BTN_OFF = 'px-2 py-0.5 bg-[#101524] text-gray-300 hover:text-white rounded font-label-data-sm text-xs border border-blue-500/20';
+  function syncQuick(){
+    document.querySelectorAll('.quick-src-btn').forEach(b => b.className = 'quick-src-btn ' + (b.dataset.game===srcSel.value?BTN_ON:BTN_OFF));
+    document.querySelectorAll('.quick-target-btn').forEach(b => b.className = 'quick-target-btn ' + (b.dataset.game===tgtSel.value?BTN_ON:BTN_OFF));
+  }
+
+  // DPI butonları
+  document.querySelectorAll('.src-dpi-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.src-dpi-btn').forEach(b => b.className = 'src-dpi-btn py-2 bg-[#0f1422] text-gray-300 hover:text-white font-label-data-sm text-xs rounded border border-blue-500/20');
+      btn.className = 'src-dpi-btn py-2 bg-gradient-to-b from-blue-600 to-[#0052cc] text-white font-label-data-sm text-xs rounded border border-[#00d2ff] shadow-[0_0_12px_rgba(0,102,255,0.6)] font-bold';
+      state.dpi = parseInt(btn.dataset.dpi, 10);
+      compute();
+    });
+  });
+
+  srcSel.addEventListener('change', compute);
+  tgtSel.addEventListener('change', compute);
+  srcSens.addEventListener('input', compute);
+  document.querySelectorAll('.quick-src-btn').forEach(b => b.addEventListener('click', () => { srcSel.value = b.dataset.game; compute(); }));
+  document.querySelectorAll('.quick-target-btn').forEach(b => b.addEventListener('click', () => { tgtSel.value = b.dataset.game; compute(); }));
+
+  // YER DEĞİŞTİR
+  $('swap-games-btn').addEventListener('click', () => {
+    const oldTarget = tgtSel.value;
+    const newSens = state.lastRaw;
+    tgtSel.value = srcSel.value;
+    srcSel.value = oldTarget;
+    if (isFinite(newSens)) srcSens.value = (G[oldTarget].slider ? Math.round(newSens) : newSens.toFixed(3));
+    compute();
+  });
+
+  // Kopyala
+  const copyBtn=$('copy-sens-btn'), copyTxt=$('copy-btn-text'), copyIcon=$('copy-icon');
+  function copyText(t){
+    if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(t);
+    const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select();
+    try{document.execCommand('copy');}catch(e){} ta.remove(); return Promise.resolve();
+  }
+  copyBtn.addEventListener('click', () => {
+    copyText(String(state.lastValue).split(' ')[0]).then(() => {
+      copyTxt.textContent = 'KOPYALANDI!'; copyIcon.textContent = 'check_circle';
+      setTimeout(() => { copyTxt.textContent = 'DEĞERİ KOPYALA & OYUNA GEÇ'; copyIcon.textContent = 'content_copy'; }, 2000);
+    });
+  });
+  $('multi-game-matrix').addEventListener('click', e => {
+    const b = e.target.closest('.matrix-copy'); if (!b) return;
+    copyText(b.dataset.val.split(' ')[0]).then(() => {
+      const sp = b.querySelector('span'); sp.textContent = 'KOPYALANDI';
+      setTimeout(() => sp.textContent = 'KOPYALA', 1500);
+    });
+  });
+
+  compute();
+})();
+</script>
+</body>
+</html>
