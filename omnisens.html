@@ -94,10 +94,10 @@
           </div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-          <div>
+          <div class="flex flex-col">
             <label class="font-label-caps text-xs text-gray-300 uppercase tracking-wider font-semibold block mb-1.5">Mevcut Sens Değerin</label>
-            <div class="relative flex items-center">
-              <input class="w-full bg-[#06080f] text-white font-label-data-lg text-lg px-3 py-2 rounded-lg border border-blue-500/30 focus:border-[#00d2ff] focus:ring-1 focus:ring-[#00d2ff] focus:outline-none" id="source-sens-input" max="100" min="0.001" step="0.001" type="number" value="0.320">
+            <div class="relative flex items-center flex-1">
+              <input class="w-full h-full min-h-[44px] bg-[#06080f] text-white font-label-data-lg text-lg px-3 py-2 rounded-lg border border-blue-500/30 focus:border-[#00d2ff] focus:ring-1 focus:ring-[#00d2ff] focus:outline-none" id="source-sens-input" max="100" min="0.001" step="0.001" type="number" value="0.320">
               <span class="absolute right-3 font-label-data-sm text-xs text-[#00d2ff] font-bold pointer-events-none">SENS</span>
             </div>
           </div>
@@ -154,6 +154,20 @@
           <div class="relative w-full group">
             <span class="material-symbols-outlined absolute left-3.5 top-3 text-blue-400 text-lg pointer-events-none">sports_esports</span>
             <select class="w-full bg-[#06080f] text-white font-headline-sm text-sm sm:text-base pl-11 pr-10 py-2.5 rounded-lg border border-blue-500/30 focus:border-[#00d2ff] focus:ring-1 focus:ring-[#00d2ff] focus:outline-none cursor-pointer" id="target-game-select"></select>
+          </div>
+        </div>
+        <div>
+          <label class="font-label-caps text-xs text-gray-300 uppercase tracking-wider font-semibold block mb-1.5">Hedef Oyunda Fare DPI</label>
+          <div class="grid grid-cols-5 gap-1">
+            <button class="tgt-dpi-btn" data-dpi="same" type="button">AYNI</button>
+            <button class="tgt-dpi-btn" data-dpi="400" type="button">400</button>
+            <button class="tgt-dpi-btn" data-dpi="800" type="button">800</button>
+            <button class="tgt-dpi-btn" data-dpi="1600" type="button">1600</button>
+            <button class="tgt-dpi-btn" data-dpi="3200" type="button">3200</button>
+          </div>
+          <div class="relative flex items-center mt-1.5">
+            <input id="custom-tdpi-input" type="number" min="50" max="100000" step="50" placeholder="Özel hedef DPI (örn. 10000)" class="w-full bg-[#06080f] text-white font-label-data-sm text-xs px-3 py-2 rounded-lg border border-blue-500/30 focus:border-[#00d2ff] focus:ring-1 focus:ring-[#00d2ff] focus:outline-none">
+            <span class="absolute right-3 font-label-data-sm text-[10px] text-[#00d2ff] font-bold pointer-events-none">DPI</span>
           </div>
         </div>
         <div class="p-3 bg-[#080c16] rounded-lg border border-blue-500/20 flex items-center justify-between">
@@ -286,7 +300,8 @@
   const $ = id => document.getElementById(id);
   const srcSel=$('source-game-select'), tgtSel=$('target-game-select'), srcSens=$('source-sens-input');
   const customDpi=$('custom-dpi-input');
-  const state = { dpi: 800, lastValue: '', lastRaw: NaN };
+  const state = { dpi: 800, tdpi: 0, lastValue: '', lastRaw: NaN };
+  function tDpi(){ return state.tdpi || state.dpi; } // 0 = kaynakla aynı
 
   // Oyun listelerini doldur
   function fillSelect(sel, def){
@@ -323,7 +338,7 @@
     let s = parseFloat(srcSens.value);
     if (!isFinite(s) || s <= 0) s = 0.001;
     const cm = cm360(state.dpi, degPerCount(sId, s));
-    const t = convert(tId, cm, state.dpi);
+    const t = convert(tId, cm, tDpi());
     const tg = G[tId];
 
     $('calculated-sens-primary').textContent = t.text;
@@ -331,8 +346,8 @@
     $('cm-360-readout').textContent = cm.toFixed(1);
     $('matrix-cm-label').textContent = 'AYNI ' + cm.toFixed(1) + ' cm/360 FİZİKSEL EŞLEŞME';
     $('edpi-readout').textContent = (state.dpi * s).toFixed(1);
-    const tSens = tg.slider ? t.raw : (914.4 / (state.dpi * cm * tg.yaw));
-    $('target-edpi-readout').textContent = (state.dpi * tSens).toFixed(1);
+    const tSens = tg.slider ? t.raw : (914.4 / (tDpi() * cm * tg.yaw));
+    $('target-edpi-readout').textContent = (tDpi() * tSens).toFixed(1);
     $('result-pair-badge').textContent = G[sId].n.toUpperCase().slice(0,16) + ' → ' + tg.n.toUpperCase().slice(0,16);
     $('target-engine-badge').textContent = (tg.eng + (tg.approx ? ' / YAKLAŞIK' : ' / 1:1')).toUpperCase();
     state.lastValue = t.text;
@@ -354,7 +369,7 @@
     [1,2,3].forEach(gr => {
       html += '<div class="col-span-2 sm:col-span-4 flex items-center justify-between border-b border-blue-950/60 pb-1.5 pt-2"><span class="font-label-caps text-[10px] text-[#00d2ff] uppercase tracking-wider font-bold">// '+GROUPS[gr]+'</span></div>';
       Object.keys(G).filter(k => G[k].g === gr).forEach(k => {
-        const g = G[k], r = convert(k, cm, state.dpi);
+        const g = G[k], r = convert(k, cm, tDpi());
         html += '<div class="p-3 bg-[#080c16] rounded-lg border border-blue-500/20 hover:border-[#00d2ff]/60 transition-all flex flex-col justify-between gap-2">'
           + '<div class="flex items-center justify-between"><span class="font-label-data-sm text-xs text-white font-bold">'+g.n+'</span><span class="font-label-caps text-[9px] text-blue-300 bg-blue-950/60 px-1.5 py-0.5 rounded border border-blue-500/20">'+g.tag+'</span></div>'
           + '<div class="flex items-baseline justify-between"><span class="font-headline-sm text-xl text-[#00d2ff] font-extrabold">'+r.text+'</span><span class="font-label-caps text-[10px] text-gray-400">'+(g.approx?'~ ':'')+g.eng+'</span></div>'
@@ -366,7 +381,7 @@
 
   const BTN_ON  = 'px-2 py-0.5 bg-blue-600 text-white rounded font-label-data-sm text-xs border border-[#00d2ff]';
   const BTN_OFF = 'px-2 py-0.5 bg-[#101524] text-gray-300 hover:text-white rounded font-label-data-sm text-xs border border-blue-500/20';
-  function syncQuick(){
+  function syncQuick(){ paintDpi();
     document.querySelectorAll('.quick-src-btn').forEach(b => b.className = 'quick-src-btn ' + (b.dataset.game===srcSel.value?BTN_ON:BTN_OFF));
     document.querySelectorAll('.quick-target-btn').forEach(b => b.className = 'quick-target-btn ' + (b.dataset.game===tgtSel.value?BTN_ON:BTN_OFF));
   }
@@ -393,6 +408,30 @@
     compute();
   });
 
+  // HEDEF DPI
+  const customT = $('custom-tdpi-input');
+  const TD_BASE = 'tgt-dpi-btn py-2 font-label-data-sm text-xs rounded border ';
+  const TD_OFF = TD_BASE + 'bg-[#0f1422] text-gray-300 hover:text-white border-blue-500/20';
+  const TD_ON  = TD_BASE + 'bg-gradient-to-b from-blue-600 to-[#0052cc] text-white border-[#00d2ff] shadow-[0_0_12px_rgba(0,102,255,0.6)] font-bold';
+  function paintDpi(){
+    document.querySelectorAll('.src-dpi-btn').forEach(b => b.className = (!customDpi.value && +b.dataset.dpi === state.dpi) ? DPI_ON : DPI_OFF);
+    document.querySelectorAll('.tgt-dpi-btn').forEach(b => {
+      const on = !customT.value && (b.dataset.dpi === 'same' ? !state.tdpi : +b.dataset.dpi === state.tdpi);
+      b.className = on ? TD_ON : TD_OFF;
+    });
+  }
+  document.querySelectorAll('.tgt-dpi-btn').forEach(btn => btn.addEventListener('click', () => {
+    customT.value = '';
+    state.tdpi = btn.dataset.dpi === 'same' ? 0 : parseInt(btn.dataset.dpi, 10);
+    compute();
+  }));
+  customT.addEventListener('input', () => {
+    const v = parseInt(customT.value, 10);
+    if (!isFinite(v) || v <= 0) return;
+    state.tdpi = v;
+    compute();
+  });
+
   srcSel.addEventListener('change', compute);
   tgtSel.addEventListener('change', compute);
   srcSens.addEventListener('input', compute);
@@ -405,6 +444,10 @@
     const newSens = state.lastRaw;
     tgtSel.value = srcSel.value;
     srcSel.value = oldTarget;
+    const PRE = [400,800,1600,3200], oSrc = state.dpi, oTgt = tDpi();
+    state.dpi = oTgt; state.tdpi = (oSrc === oTgt) ? 0 : oSrc;
+    customDpi.value = PRE.includes(state.dpi) ? '' : state.dpi;
+    customT.value = (state.tdpi && !PRE.includes(state.tdpi)) ? state.tdpi : '';
     if (isFinite(newSens)) srcSens.value = (G[oldTarget].slider ? Math.round(newSens) : newSens.toFixed(5));
     compute();
   });
